@@ -1,0 +1,43 @@
+
+
+body {
+    background-image: url("../images/JH_Film_Collage.gif");
+    background-color: pink;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+ }
+
+ h2 {
+     font-weight: bold;
+     font-size: 30px;
+ }
+
+ .Instructions {
+     border: 3px dotted white;
+     width: 50%;
+     height: 100px;
+ }
+
+ #Wins_Losses_Guesses {
+    border: 3px solid white;
+    width: 50%;
+    height: 100px;
+}
+
+#underScore {
+    border: 3px solid white;
+    font-weight: bold;
+    text-align: center;
+    width: 50%;
+    height: 100px;
+    color: darkblue;
+}
+
+#lettersGuessed {
+    border: 3px solid white;
+    width: 50%;
+    height: 100px;
+}
+
