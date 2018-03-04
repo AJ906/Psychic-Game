@@ -37,10 +37,11 @@ if (userGuess === computerGuess) {
 wins++; 
 } 
 
-for(i=0; i<10;i++){
+for(i=0; i<10; i++){
 guessesLeft--;
 break;
 }
+
 //Tried methods to get guesses to display; couldn't get it to work
 
 
