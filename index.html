@@ -8,11 +8,13 @@
 
 <body>
         <h1>The Psychic Game</h1>
-        <p>What letter am I thinking of...</p>
+        <p>Guess the letter am I thinking of...</p>
+        <p id=letterGuessed>Letters Guessed so Far: </p>
+        
 
   <div id="game">
     
-    <p>>Press any key to start playing!</p>
+    <p>Press any letter key to start playing!</p>
   </div>
 
   <script type="text/javascript">
@@ -26,7 +28,8 @@
     var wins = 0;
     var losses = 0;
     var guessesLeft = 10;
-    var game = true;
+    
+    // var game = true;
     
 
     // This function is run whenever the user presses a key.
@@ -36,14 +39,12 @@
 
       // Determines which key was pressed.
       var userGuess = event.key;
-      var guessesSoFar = [];
+      var guessArr = new Array(userGuess);
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-      // Reworked our code from last step to use "else if" instead of lots of if statements.
-
-      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
+      // This logic determines the outcome of the game (win/loss), and increments the appropriate number.
       if ((userGuess === "q") || (userGuess === "w") || (userGuess === "e") || (userGuess === "r") || 
       (userGuess === "t") || (userGuess === "y") || (userGuess === "u") || (userGuess === "i") || 
       (userGuess === "o") || (userGuess === "p") || (userGuess === "a") || (userGuess === "s") || 
@@ -55,9 +56,30 @@
       if (userGuess === computerGuess) {
         wins++; 
         } 
-      if (guessesLeft > 0) {
-          guessesLeft--; 
-      }
+
+        for(i=0; i<10;i++){
+            guessesLeft--;
+            break;
+        }
+//Tried methods to get guesses to display; couldn't get it to work
+
+
+        // let playerGuesses = document.getElementById("lettersGuessed").innerText;
+		// 		if(playerGuesses.indexOf(key) === -1) {
+		// 			document.getElementById("lettersGuessed").innerText += key
+		// 			if(guessesLeft > 0) {
+		// 				guessesLeft--;
+		// 				document.getElementById("guessesLeft").innerText = userGuess;
+        //             }
+                // }
+        // while (userGuess !== computerGuess && guessesLeft > 0) {
+        //     guessArr.push(userGuess);
+        // }
+        // console.log(guessArr);
+    //   if (guessesLeft > 0) {
+    //       guessesLeft--; 
+
+    //   }
       
       if (guessesLeft === 0) {
           losses++; 
@@ -72,6 +94,9 @@
           "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
           "<p>guesses left: " + guessesLeft + "</p>";
+        //   "<p>letters guessed: " + playerGuesses + "</p>";
+        
+
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = html;
