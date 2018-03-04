@@ -1,63 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hangman - John Hughes Film Characters</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <meta charset="UTF-8">
+  <title>Psychic Game</title>
 </head>
+
 <body>
-    <!-- <background><img src="assets/images/JH_Film_Collage.gif" alt="JH Films"></background> -->
 
-    <header>
-        <h2>Hangman: John Hughes Film Characters</h2>
-    </header>
+  <div id="game">
+    <p>Press any key to start playing!</p>
+  </div>
+
+  <script type="text/javascript">
+    // Creates an array that lists out all letter choices.
+    var computerChoices = ["q", "w", "e", "r", "t", "y", "u", 
+                            "i", "o", "p", "a", "s", "d", "f", 
+                            "g", "h", "j", "k", "l", "z", "x", 
+                            "c", "v", "b", "n", "m"];
+
+    // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+    var wins = 0;
+    var losses = 0;
     
-    <br><br>
 
-    <div class = "container">
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
 
-        <div class = "Instructions">
-            <p>Guess the character from the John Hughes film by filling in the blanks.</p>
-            <p>If you reveal the character in 10 guesses, you win!</p>
-            <br>
-            <h4>Press Any Key to Get Started</h4>
-        </div>
+      // Determines which key was pressed.
+      var userGuess = event.key;
 
-        <br><br>
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-        <div id = "Wins_Losses_Guesses">
-            <h3>Wins: <span id="winCount">0</span></h3>
-        <br><h3>Losses: <span id="lossCount">0</span></h3>
-        <br><h3>Remaining Guesses: <span id="guessCount">10</span></h3>
-        </div>
+      // Reworked our code from last step to use "else if" instead of lots of if statements.
 
-        <br><br>
-        
-        <div id = "underScore">
-         <br><h2>_ _ _ _ _ _ _</h2>
-        </div>
+      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
+      if (userGuess === computerGuess) {
+        wins++;
+      
+      }else losses++;
+      
+        // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses.
+        var html =
+          "<p>You chose: " + userGuess + "</p>" +
+          "<p>The computer chose: " + computerGuess + "</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>";
 
-        <br>
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#game").innerHTML = html;
+      };
 
-        <div id = "lettersGuessed">
-            <h3>Letters Guessed: </h3>
-
-        </div>
-
-        <!-- <div = "reveal">
-            <img src="assets/images/MysteryCharacter.jpeg" alt="Mystery Character">
-            <p>???????</p>
-        </div> -->
-
-    </div>
-    <br><br>
-
-    <footer>&copy;Copyright 2018 Angela Johnson | <a href="https://aj906.github.io/Responsive-Portfolio/" target="_blank">My Portfolio</a></p></footer>
-
+  </script>
 
 </body>
+
 </html>
