@@ -8,7 +8,7 @@
 
 <body>
         <h1>The Psychic Game</h1>
-        <p>What letter am I thinking of?</p>
+        <p>What letter am I thinking of...</p>
 
   <div id="game">
     
@@ -26,15 +26,17 @@
     var wins = 0;
     var losses = 0;
     var guessesLeft = 10;
+    var game = true;
     
 
     // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
 
-        guessesLeft--;
+       
 
       // Determines which key was pressed.
       var userGuess = event.key;
+      var guessesSoFar = [];
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -43,12 +45,17 @@
 
       // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
       if (userGuess === computerGuess) {
-        wins++;
-      
-      } else if (guessesLeft === 0) {
-      
-      losses++;
+        wins++; 
+        } 
+      if (guessesLeft > 0) {
+          guessesLeft--; 
       }
+      
+      if (guessesLeft === 0) {
+          losses++; 
+          guessesLeft = 10;
+      }
+
       
         // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses.
         var html =
